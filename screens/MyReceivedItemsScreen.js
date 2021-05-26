@@ -46,12 +46,20 @@ export default class MyReceivedItemsScreen extends React.Component{
     render(){
         return(
             <View style = {styles.container}>
-                <Text style = {styles.heading}> Items Received </Text>
+            <MyHeader title = "Items Received"
+            navigation = {this.props.navigation}/>
+            {
+            this.state.receivedItems.length !== 0?(
                 <FlatList
                     keyExtractor = {this.keyExtractor}
                     data = {this.state.receivedItems}
                     renderItem = {this.renderItem}/>
-            </View>
+                )   
+                : (
+                    <Text style = {{fontSize : 25, textAlign : 'center', fontWeight : 'bold'}}>You Have Not Received Any Items</Text>
+                )
+            }
+        </View>
         )
     }
 }
